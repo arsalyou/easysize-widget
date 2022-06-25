@@ -38,23 +38,20 @@ function validateConfiguration(){
 }
 
 export function setConfiguration(config){
-  configuration = config;
-  
+  configuration = config; 
 }
 
 export function loadWidget(){
-  console.log(exactTypeOf(['a','b','c']));
   const response = validateConfiguration();
-  if(AppConstants.VALID == response){
     return {
       render: () => {
-          ReactDOM.render(<ProductWidget img='https://upload.wikimedia.org/wikipedia/commons/3/3c/IMG_logo_%282017%29.svg' attributes={['a','b','c']} placeholderText='CLICK' />, document.getElementById("root"));
+        if(AppConstants.VALID == response){
+          ReactDOM.render(<ProductWidget img={configuration.image} attributes={configuration.attributes} placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} cartButton={configuration.cart_button}   />,
+          document.querySelector(configuration.placeholder));
+        }else{
+           // Don't render widget in production and console log the exact issue
+          console.log(response);
+        }
       },
     }
-  }else{
-    // Don't render widget in production and console log the exact issue
-    console.log(response);
-  }
- 
- 
 }

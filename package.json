@@ -17,6 +17,7 @@
   "scripts": {
     "build": "webpack --mode production",
     "start": "webpack-dev-server --mode development",
+    "serve": "node demo.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },

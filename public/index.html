@@ -11,11 +11,18 @@
   <script>
     // ...
     // Global variable
+    let configuration = {
+    attributes: ['red', 'blue', 'black'],
+    placeholder: '.root',
+    placeholder_text: 'Surprise me with the color',
+    cart_button: '.cart-btn',
+    image: window.location.origin + '/images/black.png',
+    select_attribute: function(attr) {}
+  }
+    
    
-    let config = {
-        array:['sds','dsad']
-    };
-    productWidget.loadWidget(config).render()
+    productWidget.setConfiguration(configuration);
+    productWidget.loadWidget().render()
     // ...
   </script>
 </html>
