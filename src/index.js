@@ -43,14 +43,19 @@ export function setConfiguration(config){
 
 export function loadWidget(){
   const response = validateConfiguration();
+  console.log(configuration.select_attribute);
     return {
       render: () => {
         if(AppConstants.VALID == response){
           let find = document.querySelector(configuration.placeholder);
           let div = document.createElement('div');
+          let lineBreak = document.createElement('br');
           div.setAttribute("id", "easysizeWgt");
+          find.appendChild(lineBreak);
           find.appendChild(div);
-          ReactDOM.render(<ProductWidget image={configuration.image} attributes={configuration.attributes} placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} cartButton={configuration.cart_button}   />,
+          ReactDOM.render(<ProductWidget image={configuration.image} attributes={configuration.attributes} 
+            placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} 
+            cartButton={configuration.cart_button}   />,
           document.getElementById('easysizeWgt'));
         }else{
            // Don't render widget in production and console log the exact issue
