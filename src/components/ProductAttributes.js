@@ -6,17 +6,20 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
     const [selectedAttribute, setSelectedAttribute] = useState(null);
 
     useEffect(()=>{
-        const randomIndex = Math.floor(Math.random() * attributes.length); 
-        setSelectedAttribute(attributes[randomIndex]);
-        
+        if(attributes.length > 0){
+            const randomIndex = Math.floor(Math.random() * attributes.length); 
+            setSelectedAttribute(attributes[randomIndex]);
+        }
 
     }, [])
     console.log(selectAttribute);
     const handleSelectMe = () => {
+        if(attributes.length > 0 ){
         // either function can work
         selectAttribute(selectedAttribute);
         // assuming id will be equal to attribute & in case if we have to trigger the click
         document.getElementById(selectedAttribute).click();
+        }
         handleClose();
     }
 
@@ -24,7 +27,7 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
         <Stack direction='column' sx={{alignItems:'center'}}>
             <ul>
             {
-                attributes.map((attribute, index) => {
+                attributes?.map((attribute, index) => {
                     return (
                         <li  style={{display:'flex', flexDirection:'row', flexFlow:'rowWrap'}} key={index} >{attribute}</li>
                     )})
