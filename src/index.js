@@ -3,7 +3,6 @@ import ReactDOM from "react-dom";
 import ProductWidget from './components/ProductWidget';
 import exactTypeOf from './util';
 import * as AppConstants from './AppConstants';
-import useStore from '../store';
 
 let configuration = null;
 
@@ -44,7 +43,6 @@ export function setConfiguration(config){
 
 export function loadWidget(){
   const response = validateConfiguration();
-  const setProductAttributes = useStore(state => state.setProductAttributes);
   console.log(configuration.select_attribute);
     return {
       render: () => {

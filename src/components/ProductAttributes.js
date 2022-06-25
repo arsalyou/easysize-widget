@@ -1,9 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Stack, Button, Typography} from '@mui/material';
 import AttributesList from './AttributesList';
-import useStore from '../store';
-function ProductAttributes({ handleClose, selectAttribute}) {
-    const attributes = useStore(state => state.productAttributes);
+
+function ProductAttributes({attributes, handleClose, selectAttribute}) {
+
     const [selectedAttribute, setSelectedAttribute] = useState(null);
 
     useEffect(()=>{
@@ -27,7 +27,6 @@ function ProductAttributes({ handleClose, selectAttribute}) {
     return (
         <Stack direction='column' spacing={1} sx={{alignItems:'center'}}>
              {
-                
                 attributes?.length > 0 ?
                 <>
                <AttributesList />
