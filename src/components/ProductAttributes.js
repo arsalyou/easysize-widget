@@ -8,29 +8,34 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
     useEffect(()=>{
         const randomIndex = Math.floor(Math.random() * attributes.length); 
         setSelectedAttribute(attributes[randomIndex]);
-        console.log(randomIndex);
+        
 
     }, [])
-
+    console.log(selectAttribute);
     const handleSelectMe = () => {
+        // either function can work
         selectAttribute(selectedAttribute);
+        // assuming id will be equal to attribute & in case if we have to trigger the click
+        document.getElementById(selectedAttribute).click();
         handleClose();
     }
 
     return (
         <Stack direction='column' sx={{alignItems:'center'}}>
+            <ul>
             {
                 attributes.map((attribute, index) => {
                     return (
-                        <li key={index}>{attribute}</li>
+                        <li  style={{display:'flex', flexDirection:'row', flexFlow:'rowWrap'}} key={index} >{attribute}</li>
                     )})
                 
             }
+            </ul>
 
-            <h2> Randomly Selected Attribute</h2>
+            <h3> Randomly Selected Attribute</h3>
               <Typography  variant="h4">
                 {selectedAttribute}
-                </Typography  >
+            </Typography  >
 
 
        
