@@ -14,12 +14,14 @@ function ProductImage({image, openAttributes}) {
         }, 2000)
         
     }
+    console.log("ProductImage"+image);
 
     return (
         <Stack direction='column' sx={{alignItems:'center'}} >
             {showLoader ? <CircularStatic />
             : <>
-            <Box component="img" src={image} sx={{ width: '50%', height:'50%' }} />
+           
+            <img src={image} width="500" height="500" />
             <Button variant="contained" onClick={showProductAttribute}>Surprise me</Button>
             </>
             }

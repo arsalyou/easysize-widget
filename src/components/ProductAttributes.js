@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {Stack, Button, Typography} from '@mui/material';
 
-function ProductAttributes({attributes, handleClose}) {
+function ProductAttributes({attributes, handleClose, selectAttribute}) {
 
     const [selectedAttribute, setSelectedAttribute] = useState(null);
 
@@ -13,6 +13,7 @@ function ProductAttributes({attributes, handleClose}) {
     }, [])
 
     const handleSelectMe = () => {
+        selectAttribute(selectedAttribute);
         handleClose();
     }
 

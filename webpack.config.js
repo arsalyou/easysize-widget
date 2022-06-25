@@ -40,14 +40,10 @@ module.exports = function(_env, argv) {
           ]
         },
         {
-          test: /\.(png|jpg|gif)$/i,
-          use: {
-            loader: "url-loader",
-            options: {
-              limit: 8192,
-              name: "static/media/[name].[hash:8].[ext]"
-            }
-          }
+          test: /\.(png|svg|jpg|jpeg|gif|tiff)$/,
+                use: [
+                    'file-loader?name=assets/[name].[ext]'
+                ]
         },
         {
           test: /\.svg$/,
