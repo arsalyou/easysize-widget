@@ -13,8 +13,8 @@ module.exports = function(_env, argv) {
     devtool: isDevelopment && "cheap-module-source-map",
     entry: "./src/index.js",
     output: {
-      path: path.resolve(__dirname, "dist"),
-      filename: "widget.js",
+      path: path.resolve(__dirname, './public'),
+      filename: "demo.js",
       publicPath: "",
       library: 'productWidget',
     },
@@ -102,7 +102,7 @@ module.exports = function(_env, argv) {
         new OptimizeCssAssetsPlugin()
       ],
      
-      runtimeChunk: "single"
+     
     },
     devServer: {
       compress: true,
