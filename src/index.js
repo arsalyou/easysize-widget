@@ -43,17 +43,13 @@ export function setConfiguration(config){
 
 export function loadWidget(){
   const response = validateConfiguration();
-  console.log(configuration.select_attribute);
     return {
       render: () => {
         if(AppConstants.VALID == response){
           let placeholderTag = document.querySelector(configuration.placeholder);
           let divElement = document.createElement('div');
-          let brElement = document.createElement('br');
           divElement.setAttribute("id", "easysizeWgt");
-          placeholderTag.appendChild(brElement);
           placeholderTag.appendChild(divElement);
-          placeholderTag.appendChild(brElement);
           
           ReactDOM.render(<ProductWidget image={configuration.image} attributes={configuration.attributes} 
             placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} 

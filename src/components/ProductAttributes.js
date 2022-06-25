@@ -29,8 +29,9 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
              {
                 attributes?.length > 0 ?
                 <>
-               <AttributesList />
-               <h3> Randomly Selected Attribute</h3>
+                <h4>Attributes</h4>
+               <AttributesList attributes={attributes} />
+               <h4> Randomly Selected Attribute</h4>
                <Typography  variant="h4">
                  {selectedAttribute}
              </Typography  >

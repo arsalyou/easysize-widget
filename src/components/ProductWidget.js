@@ -21,12 +21,10 @@ function ProductWidget({ image, attributes, placeholderText, selectAttribute, ca
         setTabIndex(0);
         setOpen(true);  
     }
-    console.log("ProductWidget"+image);
-    console.log("ProductWidget"+selectAttribute);
-
+ 
     return (
         <>
-        <Button variant='contained' onClick={openDialog}>{placeholderText ? placeholderText : 'Select Attribute'}</Button>
+        <Button variant='contained' sx={{m:2}} onClick={openDialog}>{placeholderText ? placeholderText : 'Select Attribute'}</Button>
         <Dialog open={open} onClose={handleClose} >
             <Stack spacing={5} sx={{ alignItems: 'center', p: 3 }}>
                 <Typography variant='h6'>EasySize Product</Typography>

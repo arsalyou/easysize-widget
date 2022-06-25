@@ -2,7 +2,7 @@ import React from 'react';
 
 function AttributesList({attributes}) {
     return (
-        <>
+       
             <ul>
             {
                 attributes?.map((attribute, index) => {
@@ -11,7 +11,7 @@ function AttributesList({attributes}) {
                     )})
             }
             </ul>
-            </>
+           
     );
 }
 
