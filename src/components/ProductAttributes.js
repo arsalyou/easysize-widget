@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from 'react';
 import {Stack, Button, Typography} from '@mui/material';
-
-function ProductAttributes({attributes, handleClose, selectAttribute}) {
-
+import AttributesList from './AttributesList';
+import useStore from '../store';
+function ProductAttributes({ handleClose, selectAttribute}) {
+    const attributes = useStore(state => state.productAttributes);
     const [selectedAttribute, setSelectedAttribute] = useState(null);
 
     useEffect(()=>{
@@ -26,22 +27,15 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
     return (
         <Stack direction='column' spacing={1} sx={{alignItems:'center'}}>
              {
+                
                 attributes?.length > 0 ?
                 <>
-            <ul>
-            {
-                attributes?.map((attribute, index) => {
-                    return (
-                        <li key={index} >{attribute}</li>
-                    )})
-            }
-            </ul>
-
-            <h3> Randomly Selected Attribute</h3>
-              <Typography  variant="h4">
-                {selectedAttribute}
-            </Typography  >
-            </>
+               <AttributesList />
+               <h3> Randomly Selected Attribute</h3>
+               <Typography  variant="h4">
+                 {selectedAttribute}
+             </Typography  >
+             </>
              :
              <h6>No attribute passed in config</h6>
          }

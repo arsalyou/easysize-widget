@@ -3,6 +3,7 @@ import ReactDOM from "react-dom";
 import ProductWidget from './components/ProductWidget';
 import exactTypeOf from './util';
 import * as AppConstants from './AppConstants';
+import useStore from '../store';
 
 let configuration = null;
 
@@ -43,17 +44,19 @@ export function setConfiguration(config){
 
 export function loadWidget(){
   const response = validateConfiguration();
+  const setProductAttributes = useStore(state => state.setProductAttributes);
   console.log(configuration.select_attribute);
     return {
       render: () => {
         if(AppConstants.VALID == response){
           let placeholderTag = document.querySelector(configuration.placeholder);
-          let div = document.createElement('div');
-          let lineBreak = document.createElement('br');
-          div.setAttribute("id", "easysizeWgt");
-          placeholderTag.appendChild(lineBreak);
-          placeholderTag.appendChild(div);
-          placeholderTag.appendChild(lineBreak);
+          let divElement = document.createElement('div');
+          let brElement = document.createElement('br');
+          divElement.setAttribute("id", "easysizeWgt");
+          placeholderTag.appendChild(brElement);
+          placeholderTag.appendChild(divElement);
+          placeholderTag.appendChild(brElement);
+          
           ReactDOM.render(<ProductWidget image={configuration.image} attributes={configuration.attributes} 
             placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} 
             cartButton={configuration.cart_button}   />,
