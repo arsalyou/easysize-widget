@@ -47,12 +47,13 @@ export function loadWidget(){
     return {
       render: () => {
         if(AppConstants.VALID == response){
-          let find = document.querySelector(configuration.placeholder);
+          let placeholderTag = document.querySelector(configuration.placeholder);
           let div = document.createElement('div');
           let lineBreak = document.createElement('br');
           div.setAttribute("id", "easysizeWgt");
-          find.appendChild(lineBreak);
-          find.appendChild(div);
+          placeholderTag.appendChild(lineBreak);
+          placeholderTag.appendChild(div);
+          placeholderTag.appendChild(lineBreak);
           ReactDOM.render(<ProductWidget image={configuration.image} attributes={configuration.attributes} 
             placeholderText={configuration.placeholder_text} selectAttribute={configuration.select_attribute} 
             cartButton={configuration.cart_button}   />,
@@ -61,6 +62,9 @@ export function loadWidget(){
            // Don't render widget in production and console log the exact issue
           console.log(response);
         }
+      },
+      unmount(){
+        ReactDOM.unmountComponentAtNode(document.getElementById('easysizeWgt')); 
       },
     }
 }

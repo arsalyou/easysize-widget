@@ -17,7 +17,7 @@ function ProductImage({image, openAttributes}) {
     console.log("ProductImage"+image);
 
     return (
-        <Stack direction='column' sx={{alignItems:'center'}} >
+        <Stack direction='column' spacing={1} sx={{alignItems:'center'}} >
             {showLoader ? <CircularStatic />
             : <>
            

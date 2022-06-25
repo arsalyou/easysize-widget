@@ -26,7 +26,7 @@ function ProductWidget({ image, attributes, placeholderText, selectAttribute, ca
 
     return (
         <>
-        <Button variant='contained' onClick={openDialog}>{placeholderText}</Button>
+        <Button variant='contained' onClick={openDialog}>{placeholderText ? placeholderText : 'Select Attribute'}</Button>
         <Dialog open={open} onClose={handleClose} >
             <Stack spacing={5} sx={{ alignItems: 'center', p: 3 }}>
                 <Typography variant='h6'>EasySize Product</Typography>

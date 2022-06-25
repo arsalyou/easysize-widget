@@ -24,14 +24,16 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
     }
 
     return (
-        <Stack direction='column' sx={{alignItems:'center'}}>
+        <Stack direction='column' spacing={1} sx={{alignItems:'center'}}>
+             {
+                attributes?.length > 0 ?
+                <>
             <ul>
             {
                 attributes?.map((attribute, index) => {
                     return (
-                        <li  style={{display:'flex', flexDirection:'row', flexFlow:'rowWrap'}} key={index} >{attribute}</li>
+                        <li key={index} >{attribute}</li>
                     )})
-                
             }
             </ul>
 
@@ -39,9 +41,10 @@ function ProductAttributes({attributes, handleClose, selectAttribute}) {
               <Typography  variant="h4">
                 {selectedAttribute}
             </Typography  >
-
-
-       
+            </>
+             :
+             <h6>No attribute passed in config</h6>
+         }
         <Button variant="contained" onClick={handleSelectMe}>Select me</Button>
     </Stack>
     );
